@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="4994" started-at="2018-11-14T10:49:17Z" finished-at="2018-11-14T10:49:22Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="4994" started-at="2018-11-14T10:49:17Z" finished-at="2018-11-14T10:49:22Z">
+      <class name="Railway.LoginTest">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Railway.LoginTest@5c3bd550]" name="beforeMethod" is-config="true" duration-ms="3566" started-at="2018-11-14T10:49:17Z" finished-at="2018-11-14T10:49:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="TC01()[pri:0, instance:Railway.LoginTest@5c3bd550]" name="TC01" duration-ms="724" started-at="2018-11-14T10:49:21Z" finished-at="2018-11-14T10:49:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC01 -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:Railway.LoginTest@5c3bd550]" name="afterMethod" is-config="true" duration-ms="687" started-at="2018-11-14T10:49:21Z" finished-at="2018-11-14T10:49:22Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- Railway.LoginTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
