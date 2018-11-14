@@ -15,7 +15,7 @@ public class LoginTest {
   public void beforeMethod() {
 	  System.out.println("Pre-condition");
 	  
-	  System.setProperty("webdriver.chrome.driver", "C:\\Users\\huy.ho\\Documents\\Selenium Tools\\chromedriver_win32\\chromedriver.exe");
+	  System.setProperty("webdriver.chrome.driver", Utilities.getProjactPath() + "\\Executables\\chromedriver.exe");
 	  Constant.WEBDRIVER = new ChromeDriver();
 	  Constant.WEBDRIVER.manage().window().maximize();
   }
@@ -32,6 +32,48 @@ public class LoginTest {
 	  String expectedMsg = "Welcome " + Constant.USERNAME;
 	  
 	  Assert.assertEquals(actualMsg, expectedMsg, "Welcome message is not displayed as expected");
+  }
+  
+  @Test
+  public void TC02() {
+	  System.out.println("TC02 - User can't login with blank \"Username\" textbox");
+	  HomePage homePage = new HomePage();
+	  homePage.open();
+	  
+	  LoginPage loginPage = homePage.gotoLoginPage();
+	  
+	  String actualMsg = loginPage.loginFail("", Constant.PASSWORD).getErrorMsg();
+	  String expectedMsg = "There was a problem with your login and/or errors exist in your form.";
+	  
+	  Assert.assertEquals(actualMsg, expectedMsg, "Error message is not displayed as expected");
+  }
+  
+  @Test
+  public void TC03() {
+	  System.out.println("TC03 - User cannot log into Railway with invalid password");
+	  HomePage homePage = new HomePage();
+	  homePage.open();
+	  
+	  LoginPage loginPage = homePage.gotoLoginPage();
+	  
+	  String actualMsg = loginPage.loginFail(Constant.USERNAME, "invalidPwd").getErrorMsg();
+	  String expectedMsg = "There was a problem with your login and/or errors exist in your form.";
+	  
+	  Assert.assertEquals(actualMsg, expectedMsg, "Error message is not displayed as expected");
+  }
+  
+  @Test
+  public void TC04() {
+	  System.out.println("TC04 - Login page displays when un-logged User clicks on \"Book ticket\" tab");
+	  HomePage homePage = new HomePage();
+	  homePage.open();
+	  
+	  BookTicketPage bookTicketPage = homePage.gotoBookTicketPage();
+	  
+	  String actualContent = bookTicketPage.getPageContent();
+	  String expectedContent = "Login page";
+	  
+	  Assert.assertEquals(actualContent, expectedContent, "Login page is not displayed as expected");
   }
   
   @AfterMethod

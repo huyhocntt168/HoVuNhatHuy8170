@@ -6,8 +6,8 @@
       <class name="Railway.LoginTest">
         <methods>
           <include name="beforeMethod"/>
-          <include name="TC01"/>
           <include name="afterMethod"/>
+          <include name="TC03"/>
         </methods>
       </class> <!-- Railway.LoginTest -->
     </classes>

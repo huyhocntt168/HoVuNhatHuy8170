@@ -40,4 +40,19 @@ public class LoginPage extends GeneralPage{
 		//Land on Home page
 		return new HomePage();
 	}
+	
+	public String getErrorMsg() {
+		return getLblLoginErrorMsg().getText();
+	}
+	
+	public LoginPage loginFail(String username, String password) {
+		//Submit login credentials
+		this.getTxtUsername().sendKeys(username);
+		this.getTxtPassword().sendKeys(password);
+		this.getBtnLogin().click();
+		
+		//Land on Login page
+		return new LoginPage();
+	}
+	
 }
