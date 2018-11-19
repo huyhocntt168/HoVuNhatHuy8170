@@ -50,6 +50,8 @@ public class LoginPage extends GeneralPage{
 		this.getTxtUsername().sendKeys(username);
 		this.getTxtPassword().sendKeys(password);
 		this.getBtnLogin().click();
+		this.clearTextbox(this.getTxtUsername());
+		this.clearTextbox(this.getTxtPassword());
 		
 		//Land on Login page
 		return new LoginPage();

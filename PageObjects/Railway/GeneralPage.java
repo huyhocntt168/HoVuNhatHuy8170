@@ -40,17 +40,26 @@ public class GeneralPage {
 		return this.getLblWelcomeMessage().getText();
 	}
 	
-	public String getPageContent() {
-		return this.getLblPageContent().getText();
-	}
-	
 	public LoginPage gotoLoginPage() {
 		this.getTabLogin().click();
 		return new LoginPage();
 	}
 	
+	public String getPageContent() {
+		return this.getLblPageContent().getText();
+	}
+	
 	public BookTicketPage gotoBookTicketPage() {
 		this.getTabBookTicket().click();
 		return new BookTicketPage();
+	}
+	
+	public HomePage Logout() {
+		this.getTabLogout().click();
+		return new HomePage();
+	}
+	
+	public void clearTextbox(WebElement txtField) {
+		txtField.clear();
 	}
 }
