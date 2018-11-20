@@ -3,58 +3,36 @@ package Railway;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import Common.Utilities;
 import Constant.Constant;
 
-public class LoginPage extends GeneralPage{
-	
-	//Locators
-	private final By _txtUsername = By.xpath("//input[@id='username']");
-	private final By _txtPassword = By.xpath("//input[@id='password']");
-	private final By _btnLogin = By.xpath("//input[@value='login']");
-	private final By _lblLoginErrorMsg = By.xpath("//p[@class='message error LoginForm']");
-	
-	//Elements
-	public WebElement getTxtUsername() {
-		return Constant.WEBDRIVER.findElement(_txtUsername);
+public class LoginPage extends GeneralPage {
+
+	Utilities utilities = new Utilities();
+	// Locators
+	private final By txtUsername = By.id("username");
+	private final By txtPassword = By.id("password");
+	private final By btnLogin = By.xpath("//input[@value='login']");
+	private final By lblLoginErrorMsg = By.xpath("//p[@class='message error LoginForm']");
+
+	// Elements
+
+	// Methods
+	public void login(String username, String password) {
+		// Submit login credentials
+		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtUsername), username);
+		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtPassword), password);
+		Constant.WEBDRIVER.findElement(btnLogin).click();
 	}
-	
-	public WebElement getTxtPassword() {
-		return Constant.WEBDRIVER.findElement(_txtPassword);
+
+	public void login(String username, String password, int times) {
+		for (int i = 1; i <= times; i++) {
+			login(username, password);
+		}
 	}
-	
-	public WebElement getBtnLogin() {
-		return Constant.WEBDRIVER.findElement(_btnLogin);
-	}
-	
-	public WebElement getLblLoginErrorMsg() {
-		return Constant.WEBDRIVER.findElement(_lblLoginErrorMsg);
-	}
-	
-	//Methods
-	public HomePage login(String username, String password) {
-		//Submit login credentials
-		this.getTxtUsername().sendKeys(username);
-		this.getTxtPassword().sendKeys(password);
-		this.getBtnLogin().click();
-		
-		//Land on Home page
-		return new HomePage();
-	}
-	
+
 	public String getErrorMsg() {
-		return getLblLoginErrorMsg().getText();
+		return Constant.WEBDRIVER.findElement(lblLoginErrorMsg).getText();
 	}
-	
-	public LoginPage loginFail(String username, String password) {
-		//Submit login credentials
-		this.getTxtUsername().sendKeys(username);
-		this.getTxtPassword().sendKeys(password);
-		this.getBtnLogin().click();
-		this.clearTextbox(this.getTxtUsername());
-		this.clearTextbox(this.getTxtPassword());
-		
-		//Land on Login page
-		return new LoginPage();
-	}
-	
+
 }
