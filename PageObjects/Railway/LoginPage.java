@@ -16,7 +16,10 @@ public class LoginPage extends GeneralPage {
 	private final By lblLoginErrorMsg = By.xpath("//p[@class='message error LoginForm']");
 
 	// Elements
-
+	
+	public WebElement getTxtUsername() {
+		return Constant.WEBDRIVER.findElement(txtUsername);
+	}
 	// Methods
 	public void login(String username, String password) {
 		// Submit login credentials
