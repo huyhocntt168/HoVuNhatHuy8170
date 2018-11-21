@@ -2,6 +2,8 @@ package Common;
 
 import static org.testng.Assert.assertEquals;
 
+import java.awt.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -31,12 +33,8 @@ public class Utilities {
 		e = (new WebDriverWait(Constant.WEBDRIVER, 3)).until(ExpectedConditions.visibilityOf(e));
 	}
 
-	public void isTabDisplay(WebElement element, String message) {
-		try {
-			Assert.assertTrue(element.isDisplayed(), message);
-		} catch (NoSuchElementException e) {
-//			throw new RuntimeException("Cannot find element");
-		}
+	public void isTabDisplay(String tabName, String message) {
+		Assert.assertFalse(Constant.WEBDRIVER.findElements(By.xpath(String.format("//span[normalize-space()='%s']", tabName))).isEmpty(), message);
 	}
 
 	public String randomValidEmail() {

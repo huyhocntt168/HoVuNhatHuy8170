@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import Common.Messages;
+import Common.TabName;
 import Common.Utilities;
 import Constant.Constant;
 
@@ -32,9 +34,9 @@ public class GeneralPage {
 	}
 
 	public void logout() {
-		if (getWelcomeMessage() != "Welcome guest") {
+		if (getWelcomeMessage() != Messages.welcomeDefault) {
 			try {
-			clickTab("Log out");
+			clickTab(TabName.logoutTab);
 			}
 			catch (Exception e) {				
 			}

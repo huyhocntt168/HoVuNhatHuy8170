@@ -1,17 +1,16 @@
 package Railway;
 
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
 import Common.Messages;
+import Common.TabName;
 import Common.Utilities;
 import Constant.Constant;
 
@@ -21,7 +20,8 @@ public class LoginTest {
 	HomePage homePage = new HomePage();
 	LoginPage loginPage = new LoginPage();
 	RegisterPage registerPage = new RegisterPage();
-	
+	SoftAssert sa = new SoftAssert();
+
 	@BeforeClass
 	public void beforeClass() {
 		System.out.println("Pre-condition");
@@ -32,11 +32,11 @@ public class LoginTest {
 	@BeforeMethod
 	public void beforeMethod() {
 		loginPage.logout();
+		homePage.clickTab(TabName.loginTab);
 	}
-	
+
 	@Test(description = "User can log into Railway with valid username and password")
 	public void TC01() {
-		homePage.clickTab("Login");
 		loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 		String actualMsg = loginPage.getWelcomeMessage();
 		String expectedMsg = Messages.welcomeMsg;
@@ -45,7 +45,6 @@ public class LoginTest {
 
 	@Test(description = "User can't login with blank \"Username\" textbox")
 	public void TC02() {
-		homePage.clickTab("Login");
 		loginPage.login("", Constant.PASSWORD);
 		String actualMsg = loginPage.getErrorMsg();
 		String expectedMsg = Messages.loginErrorMsg;
@@ -66,7 +65,7 @@ public class LoginTest {
 
 	@Test(description = "Login page displays when un-logged User clicks on \"Book ticket\" tab")
 	public void TC04() {
-		homePage.clickTab("Book ticket");
+		homePage.clickTab(TabName.bookTicketTab);
 
 		String actualContent = homePage.getPageContent();
 		String expectedContent = "Login page";
@@ -83,23 +82,24 @@ public class LoginTest {
 		assertEquals(actualMsg, expectedMsg,
 				String.format("Error message %s must be displayed", Messages.loginWrongPwdSeveralTimesMsg));
 	}
-	
+
 	@Test(description = "Additional pages display once user logged in")
 	public void TC06() {
 		loginPage.login(Constant.USERNAME, Constant.PASSWORD);
-		utilities.isTabDisplay(loginPage.getTabButton("My ticket"),"My ticket tab is not displayed");
-		utilities.isTabDisplay(loginPage.getTabButton("Change password"), "Change password tab is not displayed");
-		utilities.isTabDisplay(loginPage.getTabButton("Logout"), "Log out tab is not displayed");
-		
-		loginPage.clickTab("My ticket");
+		utilities.isTabDisplay(TabName.myTicketTab, "My ticket tab is not displayed");
+		utilities.isTabDisplay(TabName.changePwdTab, "Change password tab is not displayed");
+		utilities.isTabDisplay(TabName.logoutTab, "Log out tab is not displayed");
+
+		loginPage.clickTab(TabName.myTicketTab);
 		String actual = loginPage.getPageContent();
 		String expected = "Manage ticket";
-		assertEquals(actual, expected, "My ticket page is not displayed");
-		
-		loginPage.clickTab("Change password");
+		assertEquals(actual, expected, "My Ticket page is not displayed");
+
+		loginPage.clickTab(TabName.changePwdTab);
 		String actual1 = loginPage.getPageContent();
 		String expected1 = "Change password";
-		assertEquals(actual1, expected1, "Change password page is not displayed");
+		assertEquals(actual1, expected1, "Change password page is not displayed"); 
+
 	}
 
 	@Test(description = "User can create new account")
@@ -112,6 +112,7 @@ public class LoginTest {
 		assertEquals(actualMsg, expectedMsg,
 				String.format("Error message %s must be displayed", Messages.registerSuccess));
 	}
+
 	@AfterClass
 	public void afterClass() {
 		System.out.println("Post-condition");
