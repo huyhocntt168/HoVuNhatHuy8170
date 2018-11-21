@@ -3,11 +3,13 @@ package Railway;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 import Common.Messages;
 import Common.Utilities;
@@ -27,16 +29,18 @@ public class LoginTest {
 		homePage.open();
 	}
 
+	@BeforeMethod
+	public void beforeMethod() {
+		loginPage.logout();
+	}
+	
 	@Test(description = "User can log into Railway with valid username and password")
 	public void TC01() {
 		homePage.clickTab("Login");
 		loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 		String actualMsg = loginPage.getWelcomeMessage();
 		String expectedMsg = Messages.welcomeMsg;
-//		loginPage.logout();
-		assertEquals(actualMsg, expectedMsg, String.format("%s must be displayed", Messages.welcomeMsg));		
-		loginPage.logout();
-
+		assertEquals(actualMsg, expectedMsg, String.format("%s must be displayed", Messages.welcomeMsg));
 	}
 
 	@Test(description = "User can't login with blank \"Username\" textbox")
@@ -83,9 +87,9 @@ public class LoginTest {
 	@Test(description = "Additional pages display once user logged in")
 	public void TC06() {
 		loginPage.login(Constant.USERNAME, Constant.PASSWORD);
-		utilities.isTabDisplay(loginPage.getTabButton("My ticket"));
-		utilities.isTabDisplay(loginPage.getTabButton("Change password"));
-		utilities.isTabDisplay(loginPage.getTabButton("Log out"));
+		utilities.isTabDisplay(loginPage.getTabButton("My ticket"),"My ticket tab is not displayed");
+		utilities.isTabDisplay(loginPage.getTabButton("Change password"), "Change password tab is not displayed");
+		utilities.isTabDisplay(loginPage.getTabButton("Logout"), "Log out tab is not displayed");
 		
 		loginPage.clickTab("My ticket");
 		String actual = loginPage.getPageContent();
@@ -100,7 +104,6 @@ public class LoginTest {
 
 	@Test(description = "User can create new account")
 	public void TC07() {
-		loginPage.logout();
 		loginPage.clickTab("Register");
 		registerPage.registerAccount();
 		String actualMsg = registerPage.getPageContent();

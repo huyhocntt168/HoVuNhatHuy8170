@@ -16,9 +16,9 @@ public class RegisterPage extends GeneralPage {
 	
 	public void registerAccount() {
 		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtUsername), utilities.randomValidEmail());
-		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtPassword), "123456789");
-		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtConfirmPassword), "123456789");
-		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtPID), "123456789");
+		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtPassword), Constant.PASSWORD);
+		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtConfirmPassword), Constant.PASSWORD);
+		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtPID), Constant.PID);
 		Constant.WEBDRIVER.findElement(btnRegister).click();
 	}
 }

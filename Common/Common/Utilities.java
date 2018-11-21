@@ -1,11 +1,15 @@
 package Common;
 
+import static org.testng.Assert.assertEquals;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import Constant.Constant;
 import Railway.LoginPage;
@@ -27,12 +31,16 @@ public class Utilities {
 		e = (new WebDriverWait(Constant.WEBDRIVER, 3)).until(ExpectedConditions.visibilityOf(e));
 	}
 
-	public void isTabDisplay(WebElement e) {
-		Assert.assertTrue(e.isDisplayed(), "Tab is not displayed");
+	public void isTabDisplay(WebElement element, String message) {
+		try {
+			Assert.assertTrue(element.isDisplayed(), message);
+		} catch (NoSuchElementException e) {
+//			throw new RuntimeException("Cannot find element");
+		}
 	}
-	
+
 	public String randomValidEmail() {
 		String s = String.valueOf(System.currentTimeMillis());
-		return String.format("huyhocntt168+%s@gmail.com", s.substring(5, s.length()));
+		return String.format("%s@mailinator.com", s.substring(5, s.length()));
 	}
 }

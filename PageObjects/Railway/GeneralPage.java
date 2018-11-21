@@ -18,7 +18,7 @@ public class GeneralPage {
 	public String getWelcomeMessage() {
 		return Constant.WEBDRIVER.findElement(lblWelcomeMessage).getText();
 	}
-	
+
 	public WebElement getTabButton(String tabName) {
 		return Constant.WEBDRIVER.findElement(By.xpath(String.format("//span[normalize-space()='%s']", tabName)));
 	}
@@ -32,10 +32,13 @@ public class GeneralPage {
 	}
 
 	public void logout() {
-//		utilities.waitElementDisplay(Constant.WEBDRIVER.findElement(By.xpath("//span[normalize-space()='Log out']")));
-//		if (Constant.WEBDRIVER.findElement(By.xpath("//span[normalize-space()='Log out']")).isDisplayed()) {
+		if (getWelcomeMessage() != "Welcome guest") {
+			try {
 			clickTab("Log out");
-//		}
+			}
+			catch (Exception e) {				
+			}
+		}
 	}
 
 }
