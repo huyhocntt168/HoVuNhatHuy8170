@@ -4,8 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import Common.Messages;
-import Common.TabName;
+import Constant.Messages;
+import Constant.TabName;
 import Common.Utilities;
 import Constant.Constant;
 
@@ -25,8 +25,8 @@ public class GeneralPage {
 		return Constant.WEBDRIVER.findElement(By.xpath(String.format("//span[normalize-space()='%s']", tabName)));
 	}
 
-	public void clickTab(String tabName) {
-		Constant.WEBDRIVER.findElement(By.xpath(String.format("//span[normalize-space()='%s']", tabName))).click();
+	public void goToPage(String tabName) {
+		getTabButton(tabName).click();
 	}
 
 	public String getPageContent() {
@@ -34,13 +34,7 @@ public class GeneralPage {
 	}
 
 	public void logout() {
-		if (getWelcomeMessage() != Messages.welcomeDefault) {
-			try {
-			clickTab(TabName.logoutTab);
-			}
-			catch (Exception e) {				
-			}
-		}
+		goToPage(TabName.logout);
 	}
 
 }

@@ -1,0 +1,9 @@
+<suite name="Suite1" verbose="1" >
+  <test name="TestSuite1">
+    <classes>
+      <class name="Railway.LoginTest"/>
+      <class name="Railway.RegisterTest"/>
+	  <class name="Railway.ChangePasswordTest"/>
+    </classes>
+  </test>
+</suite>

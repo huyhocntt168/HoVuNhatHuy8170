@@ -13,12 +13,17 @@ public class RegisterPage extends GeneralPage {
 	private final By txtConfirmPassword = By.id("confirmPassword");
 	private final By txtPID = By.id("pid");
 	private final By btnRegister = By.xpath("//input[@value = 'Register']");
+	private final By lblErrorMsg = By.xpath("//p[@class='message error']");
 	
-	public void registerAccount() {
-		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtUsername), utilities.randomValidEmail());
-		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtPassword), Constant.PASSWORD);
-		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtConfirmPassword), Constant.PASSWORD);
-		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtPID), Constant.PID);
+	//Methods
+	public String getErrorMsg() {
+		return Constant.WEBDRIVER.findElement(lblErrorMsg).getText();
+	}
+	public void registerAccount(String email, String pwd, String confirmPwd, String pid) {
+		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtUsername), email);
+		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtPassword), pwd);
+		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtConfirmPassword), confirmPwd);
+		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtPID), pid);
 		Constant.WEBDRIVER.findElement(btnRegister).click();
 	}
 }
