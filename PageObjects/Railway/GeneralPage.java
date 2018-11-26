@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 
 import Constant.TabName;
 import Constant.Constant;
+import Constant.Tab;
 
 public class GeneralPage {
 	// Locators
@@ -30,7 +31,7 @@ public class GeneralPage {
 	}
 
 	public void logout() {
-		getTabButton(TabName.logout).click();
+		getTabButton(Tab.logout.Name()).click();
 	}
 
 }
