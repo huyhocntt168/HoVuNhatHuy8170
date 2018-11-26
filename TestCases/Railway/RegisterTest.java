@@ -21,22 +21,14 @@ public class RegisterTest extends TestBase {
 	public void TC01() {
 		homePage.goToPage(TabName.register);
 		registerPage.registerAccount(utilities.validEmail(),Constant.PASSWORD, Constant.PASSWORD,Constant.PID);
-		String actualMsg = registerPage.getPageContent();
-		String expectedMsg = Messages.registerSuccess;
-
-		assertEquals(actualMsg, expectedMsg,
-				String.format("Error message %s must be displayed", Messages.registerSuccess));
+		assertEquals(registerPage.getPageContent(), Messages.registerSuccess);
 	}
 	
 	@Test(description = "User can't create account with \"Confirm password\" is not the same with \"Password\"")
 	public void TC02() {
 		homePage.goToPage(TabName.register);
 		registerPage.registerAccount(utilities.validEmail(),Constant.PASSWORD, Constant.WRONG_PASSWORD,Constant.PID);
-		String actualMsg = registerPage.getErrorMsg();
-		String expectedMsg = Messages.registerError;
-
-		assertEquals(actualMsg, expectedMsg,
-				String.format("Error message %s must be displayed", Messages.registerError));
+		assertEquals(registerPage.getErrorMsg(), Messages.registerError);
 	}
 
 }

@@ -18,9 +18,6 @@ public class ChangePasswordTest extends TestBase {
 		loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 		loginPage.goToPage(TabName.changePwd);
 		changePassword.changePwd(Constant.PASSWORD, Constant.PASSWORD, Constant.PASSWORD);
-		String actualMsg = changePassword.getChangePwdMsg();
-		String expectedMsg = Messages.changePwdSuccess;
-		loginPage.logout();
-		assertEquals(actualMsg, expectedMsg, String.format("%s must be displayed", Messages.changePwdSuccess));
+		assertEquals(changePassword.getChangePwdMsg(), Messages.changePwdSuccess, String.format("%s must be displayed", Messages.changePwdSuccess));
 	}
 }

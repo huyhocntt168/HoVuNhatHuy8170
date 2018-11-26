@@ -2,15 +2,11 @@ package Railway;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 
-import Constant.Messages;
 import Constant.TabName;
-import Common.Utilities;
 import Constant.Constant;
 
 public class GeneralPage {
-	Utilities utilities = new Utilities();
 	// Locators
 	private final By lblWelcomeMessage = By.xpath("//div[@class='account']");
 	private final By lblPageContent = By.xpath("//h1");
@@ -34,7 +30,7 @@ public class GeneralPage {
 	}
 
 	public void logout() {
-		goToPage(TabName.logout);
+		getTabButton(TabName.logout).click();
 	}
 
 }

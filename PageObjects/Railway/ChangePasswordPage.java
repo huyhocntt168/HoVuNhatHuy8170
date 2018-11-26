@@ -2,9 +2,11 @@ package Railway;
 
 import org.openqa.selenium.By;
 
+import Common.ElementHelper;
 import Constant.Constant;
 
 public class ChangePasswordPage extends GeneralPage {
+	ElementHelper elementHelper = new ElementHelper();
 	// Locators
 	private final By txtCurrentPwd = By.id("currentPassword");
 	private final By txtNewPwd = By.id("newPassword");
@@ -20,9 +22,9 @@ public class ChangePasswordPage extends GeneralPage {
 	}
 	
 	public void changePwd(String currentPwd, String newPwd, String confirmPwd) {
-		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtCurrentPwd), currentPwd);
-		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtNewPwd), newPwd);
-		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtConfirmPwd), confirmPwd);	
+		elementHelper.enterTextBox(Constant.WEBDRIVER.findElement(txtCurrentPwd), currentPwd);
+		elementHelper.enterTextBox(Constant.WEBDRIVER.findElement(txtNewPwd), newPwd);
+		elementHelper.enterTextBox(Constant.WEBDRIVER.findElement(txtConfirmPwd), confirmPwd);	
 		Constant.WEBDRIVER.findElement(btnChangePwd).click();
 	}
 }

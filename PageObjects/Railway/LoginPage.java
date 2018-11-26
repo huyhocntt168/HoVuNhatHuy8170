@@ -3,12 +3,12 @@ package Railway;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import Common.Utilities;
+import Common.ElementHelper;
 import Constant.Constant;
 
 public class LoginPage extends GeneralPage {
 
-	Utilities utilities = new Utilities();
+	ElementHelper elementHelper = new ElementHelper();
 	// Locators
 	private final By txtUsername = By.id("username");
 	private final By txtPassword = By.id("password");
@@ -23,8 +23,8 @@ public class LoginPage extends GeneralPage {
 	// Methods
 	public void login(String username, String password) {
 		// Submit login credentials
-		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtUsername), username);
-		utilities.enterTextBox(Constant.WEBDRIVER.findElement(txtPassword), password);
+		elementHelper.enterTextBox(Constant.WEBDRIVER.findElement(txtUsername), username);
+		elementHelper.enterTextBox(Constant.WEBDRIVER.findElement(txtPassword), password);
 		Constant.WEBDRIVER.findElement(btnLogin).click();
 	}
 
