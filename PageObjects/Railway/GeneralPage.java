@@ -3,11 +3,14 @@ package Railway;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import Constant.TabName;
+import Common.ElementHelper;
+import Common.Utilities;
 import Constant.Constant;
-import Constant.Tab;
+
 
 public class GeneralPage {
+	ElementHelper elementHelper = new ElementHelper();
+	
 	// Locators
 	private final By lblWelcomeMessage = By.xpath("//div[@class='account']");
 	private final By lblPageContent = By.xpath("//h1");
@@ -18,11 +21,11 @@ public class GeneralPage {
 		return Constant.WEBDRIVER.findElement(lblWelcomeMessage).getText();
 	}
 
-	public WebElement getTabButton(String tabName) {
-		return Constant.WEBDRIVER.findElement(By.xpath(String.format("//span[normalize-space()='%s']", tabName)));
+	public WebElement getTabButton(Constant.TabName tabName) {
+		return Constant.WEBDRIVER.findElement(By.xpath(String.format("//span[normalize-space()='%s']", tabName.getName())));
 	}
 
-	public void goToPage(String tabName) {
+	public void goToPage(Constant.TabName tabName) {
 		getTabButton(tabName).click();
 	}
 
@@ -31,7 +34,9 @@ public class GeneralPage {
 	}
 
 	public void logout() {
-		getTabButton(Tab.logout.Name()).click();
+		if(elementHelper.isTabDisplay(Constant.TabName.LOGOUT)) {
+		getTabButton(Constant.TabName.LOGOUT).click();
+		}
 	}
 
 }

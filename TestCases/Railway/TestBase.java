@@ -12,14 +12,12 @@ import org.testng.annotations.AfterClass;
 
 public class TestBase {
 	Utilities utilities = new Utilities();
-	HomePage homePage = new HomePage();
-	ElementHelper elementHelper = new ElementHelper();
-
+	
 	@BeforeClass
 	public void beforeClass() {
 		System.out.println("Pre-condition");
 		utilities.openChrome();
-		homePage.open();
+		Constant.WEBDRIVER.navigate().to(Constant.RAILWAY_URL);
 	}
 
 	@AfterClass

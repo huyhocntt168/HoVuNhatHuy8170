@@ -1,34 +1,44 @@
 package Railway;
 
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import Constant.Constant;
 
-import org.testng.annotations.BeforeClass;
-
 import static org.testng.Assert.*;
 
-import org.testng.annotations.AfterClass;
 
 import Constant.Messages;
-import Common.Utilities;
-import Constant.TabName;
+import Common.ElementHelper;
 
 public class RegisterTest extends TestBase {
+	HomePage homePage = new HomePage();
+	ElementHelper elementHelper = new ElementHelper();
 	RegisterPage registerPage = new RegisterPage();
+	SoftAssert softAssert = new SoftAssert();
 	
 	@Test(description = "User can create new account")
 	public void TC01() {
-		homePage.goToPage(TabName.register);
+		homePage.goToPage(Constant.TabName.REGISTER);
 		registerPage.registerAccount(utilities.validEmail(),Constant.PASSWORD, Constant.PASSWORD,Constant.PID);
 		assertEquals(registerPage.getPageContent(), Messages.registerSuccess);
 	}
 	
 	@Test(description = "User can't create account with \"Confirm password\" is not the same with \"Password\"")
 	public void TC02() {
-		homePage.goToPage(TabName.register);
-		registerPage.registerAccount(utilities.validEmail(),Constant.PASSWORD, Constant.WRONG_PASSWORD,Constant.PID);
+		homePage.goToPage(Constant.TabName.REGISTER);
+		registerPage.registerAccount(utilities.validEmail(),Constant.PASSWORD, Constant.PASSWORD + "1",Constant.PID);
 		assertEquals(registerPage.getErrorMsg(), Messages.registerError);
+	}
+	
+	@Test(description = "User can't create account while password and PID fields are empty")
+	public void TC03() {
+		homePage.goToPage(Constant.TabName.REGISTER);
+		registerPage.registerAccount(utilities.validEmail(),"", "","");
+		softAssert.assertEquals(registerPage.getErrorMsg(), Messages.registerError);
+		softAssert.assertEquals(registerPage.getPwdErrorMsg(), Messages.registerPwdError);
+		softAssert.assertEquals(registerPage.getPidErrorMsg(), Messages.registerPidError);
+		softAssert.assertAll();
 	}
 
 }
