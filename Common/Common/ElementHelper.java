@@ -1,8 +1,13 @@
 package Common;
 
+import java.util.NoSuchElementException;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.InvalidSelectorException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Constant.Constant;
 
@@ -30,7 +35,20 @@ public class ElementHelper {
 		Select select = new Select(drdElement);
 		select.selectByVisibleText(value);
 	}
-//	public void waitElementDisplay(WebElement e) {
-//	e = (new WebDriverWait(Constant.WEBDRIVER, 3)).until(ExpectedConditions.visibilityOf(e));
-//}
+	
+//	public void WaitAndClick(WebElement element, int times) {
+//		int i = 0;
+//		while(i<times){
+//			try {
+//				element.click();
+//				i=times;
+//			}
+//			catch (Exception e) {
+//				i++;
+//			}
+//		}
+//	}
+	public WebElement waitElementLocale(By locate) {
+		return new WebDriverWait(Constant.WEBDRIVER, 20).until(ExpectedConditions.visibilityOfElementLocated(locate));
+	}
 }

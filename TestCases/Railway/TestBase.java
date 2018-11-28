@@ -20,10 +20,10 @@ public class TestBase {
 		Constant.WEBDRIVER.navigate().to(Constant.RAILWAY_URL);
 	}
 
-	@AfterClass
-	public void afterClass() {
-		System.out.println("Post-condition");
-		Constant.WEBDRIVER.quit();
-	}
+//	@AfterClass
+//	public void afterClass() {
+//		System.out.println("Post-condition");
+//		Constant.WEBDRIVER.quit();
+//	}
 
 }
