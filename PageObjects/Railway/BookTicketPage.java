@@ -3,6 +3,7 @@ package Railway;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 
+import Common.TicketInfo;
 import Constant.Constant;
 
 public class BookTicketPage extends GeneralPage {
@@ -21,12 +22,12 @@ public class BookTicketPage extends GeneralPage {
 	
 		//Methods
 	
-	public void bookTicket(String departDate, Constant.DepartStation departFrom, Constant.ArriveStation arriverAt, Constant.SeatType seatType, String ticketAmount) {
-		elementHelper.selectItemByValue(Constant.WEBDRIVER.findElement(drdDepartDate), departDate);
-		elementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdDepartStation), departFrom.getDepartStation());
-		elementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdArriveStation), arriverAt.getArriveStation());
-		elementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdSeatType), seatType.getSeatType());
-		elementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdTicketAmount), ticketAmount);
+	public void bookTicket(TicketInfo ticketInfo) {
+		elementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdDepartDate), ticketInfo.getDepartDate());
+		elementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdDepartStation), ticketInfo.getDepartStation());
+		elementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdArriveStation), ticketInfo.getArriveStation());
+		elementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdSeatType), ticketInfo.getSeatType());
+		elementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdTicketAmount), ticketInfo.getTicketAmount());
 		Constant.WEBDRIVER.findElement(btnBookticket).click();
 	}
 	

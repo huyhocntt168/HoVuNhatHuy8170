@@ -1,3 +1,6 @@
 eclipse.preferences.version=1
+encoding//Common/Common/TicketInfo.java=UTF-8
 encoding//Common/Constant/Constant.java=UTF-8
+encoding//PageObjects/Railway/BookTicketPage.java=UTF-8
 encoding//TestCases/Railway/BookTicketTest.java=UTF-8
+encoding/<project>=UTF-8

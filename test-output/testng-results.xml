@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="23723" started-at="2018-11-30T01:39:22Z" finished-at="2018-11-30T01:39:46Z">
+  <suite name="Default suite" duration-ms="5498" started-at="2018-11-30T10:32:26Z" finished-at="2018-11-30T10:32:32Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="23723" started-at="2018-11-30T01:39:22Z" finished-at="2018-11-30T01:39:46Z">
-      <class name="Railway.ForgotPasswordTest">
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:Railway.ForgotPasswordTest@31ef45e3]" name="beforeClass" is-config="true" duration-ms="3999" started-at="2018-11-30T01:39:22Z" finished-at="2018-11-30T01:39:26Z">
+    <test name="Default test" duration-ms="5498" started-at="2018-11-30T10:32:26Z" finished-at="2018-11-30T10:32:32Z">
+      <class name="Railway.BookTicketTest">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:Railway.BookTicketTest@31ef45e3]" name="beforeClass" is-config="true" duration-ms="4049" started-at="2018-11-30T10:32:26Z" finished-at="2018-11-30T10:32:30Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="TC01()[pri:0, instance:Railway.ForgotPasswordTest@31ef45e3]" name="TC01" duration-ms="19707" started-at="2018-11-30T01:39:26Z" description="User can change password" finished-at="2018-11-30T01:39:46Z">
+        <test-method status="PASS" signature="TC01()[pri:0, instance:Railway.BookTicketTest@31ef45e3]" name="TC01" duration-ms="1434" started-at="2018-11-30T10:32:30Z" description="User can book 1 ticket at a time" finished-at="2018-11-30T10:32:32Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC01 -->
-      </class> <!-- Railway.ForgotPasswordTest -->
+      </class> <!-- Railway.BookTicketTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
