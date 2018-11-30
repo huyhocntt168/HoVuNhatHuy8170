@@ -14,4 +14,7 @@ public interface Messages {
 	String registerSuccess = "Thank you for registering your account";
 	String registerPwdError = "Invalid password length.";
 	String registerPidError = "Invalid ID length.";
+	
+	String resetPwdWrongToken = "The password reset token is incorrect or may be expired. Visit the forgot password page to generate a new one.";
+	String resetPwdFailMsg = "Could not reset password. Please correct the errors and try again.";
 }

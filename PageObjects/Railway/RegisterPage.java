@@ -3,10 +3,12 @@ package Railway;
 import org.openqa.selenium.By;
 
 import Common.ElementHelper;
+import Common.Utilities;
 import Constant.Constant;
 
 public class RegisterPage extends GeneralPage {
 	ElementHelper elementHelper = new ElementHelper();
+	Utilities utilities = new Utilities();
 	// Locators
 	private By txtUsername = By.id("email");
 	private By txtPassword = By.id("password");
@@ -45,5 +47,7 @@ public class RegisterPage extends GeneralPage {
 		elementHelper.enterTextBox(Constant.WEBDRIVER.findElement(txtConfirmPassword), confirmPwd);
 		elementHelper.enterTextBox(Constant.WEBDRIVER.findElement(txtPID), pid);
 		Constant.WEBDRIVER.findElement(btnRegister).click();
+		utilities.connectMail();
+		Constant.WEBDRIVER.get(utilities.goToLinkWithinMail());	
 	}
 }
