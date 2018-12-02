@@ -4,6 +4,8 @@
       <class name="Railway.LoginTest"/>
       <class name="Railway.RegisterTest"/>
 	  <class name="Railway.ChangePasswordTest"/>
+	  <class name="Railway.ForgotPasswordTest"/>
+      <class name="Railway.BookTicketTest"/>
     </classes>
   </test>
 </suite>

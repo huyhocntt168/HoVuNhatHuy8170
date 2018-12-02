@@ -3,13 +3,6 @@
 <suite name="Failed suite [Suite1]">
   <test thread-count="5" name="TestSuite1(failed)">
     <classes>
-      <class name="Railway.ChangePasswordTest">
-        <methods>
-          <include name="beforeClass"/>
-          <include name="afterClass"/>
-          <include name="TC01"/>
-        </methods>
-      </class> <!-- Railway.ChangePasswordTest -->
       <class name="Railway.LoginTest">
         <methods>
           <include name="TC05"/>
@@ -18,6 +11,28 @@
           <include name="afterClass"/>
         </methods>
       </class> <!-- Railway.LoginTest -->
+      <class name="Railway.ChangePasswordTest">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="TC09"/>
+          <include name="afterClass"/>
+        </methods>
+      </class> <!-- Railway.ChangePasswordTest -->
+      <class name="Railway.ForgotPasswordTest">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="TC12"/>
+          <include name="afterClass"/>
+          <include name="TC13"/>
+        </methods>
+      </class> <!-- Railway.ForgotPasswordTest -->
+      <class name="Railway.RegisterTest">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="afterClass"/>
+          <include name="TC11"/>
+        </methods>
+      </class> <!-- Railway.RegisterTest -->
     </classes>
   </test> <!-- TestSuite1(failed) -->
 </suite> <!-- Failed suite [Suite1] -->

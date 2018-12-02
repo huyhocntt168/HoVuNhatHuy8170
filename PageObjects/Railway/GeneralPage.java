@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import Common.ElementHelper;
-import Common.Utilities;
 import Constant.Constant;
 
 
@@ -25,11 +24,11 @@ public class GeneralPage {
 		return Constant.WEBDRIVER.findElement(By.xpath(String.format("//span[normalize-space()='%s']", tabName.getName())));
 	}
 
-	public void goToPage(Constant.TabName tabName) {
+	public void openTab(Constant.TabName tabName) {
 		getTabButton(tabName).click();
 	}
 
-	public String getPageContent() {
+	public String getPageHeader() {
 		return Constant.WEBDRIVER.findElement(lblPageContent).getText();
 	}
 

@@ -17,15 +17,16 @@ public class LoginPage extends GeneralPage {
 	private By lnkForgotPassword = By.xpath("//a[normalize-space()='Forgot Password page']");
 
 	// Elements
-	
+
 	public WebElement getTxtUsername() {
 		return Constant.WEBDRIVER.findElement(txtUsername);
 	}
+
 	// Methods
 	public void login(String username, String password) {
 		// Submit login credentials
-		elementHelper.enterTextBox(Constant.WEBDRIVER.findElement(txtUsername), username);
-		elementHelper.enterTextBox(Constant.WEBDRIVER.findElement(txtPassword), password);
+		elementHelper.enter(Constant.WEBDRIVER.findElement(txtUsername), username);
+		elementHelper.enter(Constant.WEBDRIVER.findElement(txtPassword), password);
 		Constant.WEBDRIVER.findElement(btnLogin).click();
 	}
 
@@ -38,8 +39,8 @@ public class LoginPage extends GeneralPage {
 	public String getErrorMsg() {
 		return Constant.WEBDRIVER.findElement(lblLoginErrorMsg).getText();
 	}
-	
-	public void goToForgotPwdPage() {
+
+	public void goToForgotPasswordPage() {
 		Constant.WEBDRIVER.findElement(lnkForgotPassword).click();
 	}
 

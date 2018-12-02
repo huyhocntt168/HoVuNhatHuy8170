@@ -2,29 +2,32 @@ package Railway;
 
 import static org.testng.Assert.assertEquals;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
-import Common.ElementHelper;
-import Common.Utilities;
 import Constant.Constant;
 import Constant.Messages;
 
 public class ChangePasswordTest extends TestBase {
 	HomePage homePage = new HomePage();
-	ElementHelper elementHelper = new ElementHelper();
 	LoginPage loginPage = new LoginPage();
+	RegisterPage registerPage = new RegisterPage();
 	ChangePasswordPage changePassword = new ChangePasswordPage();
-	SoftAssert softAssert = new SoftAssert();
+	String USERNAME = utilities.getValidEmail();
+	
+	@BeforeMethod
+	public void beforeMethod() {
+		homePage.openTab(Constant.TabName.REGISTER);
+		registerPage.registerAccount(USERNAME,Constant.PASSWORD);
+		registerPage.activateAccount();
+		registerPage.openTab(Constant.TabName.LOGIN);
+		loginPage.login(USERNAME, Constant.PASSWORD);
+		loginPage.openTab(Constant.TabName.CHANGEPASSWORD);
+	}
 	
 	@Test(description = "User can change password")
-	public void TC01() {
-		homePage.goToPage(Constant.TabName.LOGIN);
-		loginPage.login(Constant.USERNAME, Constant.PASSWORD);
-		loginPage.goToPage(Constant.TabName.CHANGEPWD);
-		changePassword.changePwd(Constant.PASSWORD, Constant.PASSWORD, Constant.PASSWORD);
-		softAssert.assertEquals(changePassword.getChangePwdMsg(), Messages.changePwdSuccess);
-//		changePassword.changePwd(Constant.PASSWORD, Constant.PASSWORD, Constant.PASSWORD);
-		softAssert.assertAll();
+	public void TC09() {
+		changePassword.changePassword(Constant.PASSWORD, Constant.PASSWORD_CHANGED, Constant.PASSWORD_CHANGED);
+		assertEquals(changePassword.getChangePwdMsg(), Messages.SUCCESS_CHANGE_PASSWORD);
 	}
 }

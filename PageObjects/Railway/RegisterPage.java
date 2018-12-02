@@ -18,36 +18,37 @@ public class RegisterPage extends GeneralPage {
 	private By lblErrorMsg = By.xpath("//p[@class='message error']");
 	private By lblPwdErrorMsg = By.xpath("//label[@for='password' and @class='validation-error']");
 	private By lblPidErrorMsg = By.xpath("//label[@for='pid' and @class='validation-error']");
-	
-	//Methods
+
+	// Methods
 	public String getErrorMsg() {
-		if(elementHelper.isElementDisplay(lblErrorMsg)) {
 		return Constant.WEBDRIVER.findElement(lblErrorMsg).getText();
-		}
-		return null;
 	}
-	
+
 	public String getPwdErrorMsg() {
-		if(elementHelper.isElementDisplay(lblPwdErrorMsg)) {
-			return Constant.WEBDRIVER.findElement(lblPwdErrorMsg).getText();
-		}
-		return null;
+		return Constant.WEBDRIVER.findElement(lblPwdErrorMsg).getText();
 	}
-	
+
 	public String getPidErrorMsg() {
-		if(elementHelper.isElementDisplay(lblPidErrorMsg)) {
-			return Constant.WEBDRIVER.findElement(lblPidErrorMsg).getText();
-		}
-		return null;
+		return Constant.WEBDRIVER.findElement(lblPidErrorMsg).getText();
 	}
-	
+
+	public void registerAccount(String email, String pwd) {
+		registerAccount(email, pwd, pwd, Constant.PID);
+	}
+
+	public void registerAccount(String email, String pwd, String confirmPwd) {
+		registerAccount(email, pwd, confirmPwd, Constant.PID);
+	}
+
 	public void registerAccount(String email, String pwd, String confirmPwd, String pid) {
-		elementHelper.enterTextBox(Constant.WEBDRIVER.findElement(txtUsername), email);
-		elementHelper.enterTextBox(Constant.WEBDRIVER.findElement(txtPassword), pwd);
-		elementHelper.enterTextBox(Constant.WEBDRIVER.findElement(txtConfirmPassword), confirmPwd);
-		elementHelper.enterTextBox(Constant.WEBDRIVER.findElement(txtPID), pid);
+		elementHelper.enter(Constant.WEBDRIVER.findElement(txtUsername), email);
+		elementHelper.enter(Constant.WEBDRIVER.findElement(txtPassword), pwd);
+		elementHelper.enter(Constant.WEBDRIVER.findElement(txtConfirmPassword), confirmPwd);
+		elementHelper.enter(Constant.WEBDRIVER.findElement(txtPID), pid);
 		Constant.WEBDRIVER.findElement(btnRegister).click();
-		utilities.connectMail();
-		Constant.WEBDRIVER.get(utilities.goToLinkWithinMail());	
+	}
+
+	public void activateAccount() {
+		Constant.WEBDRIVER.get(utilities.getActiveLink().replace(":8888", ""));
 	}
 }

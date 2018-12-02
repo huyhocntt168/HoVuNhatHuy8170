@@ -1,4 +1,5 @@
 package Common;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Random;
@@ -9,7 +10,7 @@ public class TicketInfo {
 	private String arriveStation;
 	private String seatType;
 	private String ticketAmount;
-	
+
 	public TicketInfo() {
 		this.departDate = getRandomDepartDate();
 		this.departStation = "Sài Gòn";
@@ -57,13 +58,13 @@ public class TicketInfo {
 	public void setTicketAmount(String ticketAmount) {
 		this.ticketAmount = ticketAmount;
 	}
-	
+
 	public String getRandomDepartDate() {
 		SimpleDateFormat format = new SimpleDateFormat("M/d/yyyy");
 		Random random = new Random();
-		int i = random.nextInt(27)+3;
+		int i = random.nextInt(27) + 3;
 		Calendar calendar = Calendar.getInstance();
-		calendar.add(calendar.DAY_OF_MONTH, i);
+		calendar.add(Calendar.DAY_OF_MONTH, i);
 		return format.format(calendar.getTime());
 	}
 }

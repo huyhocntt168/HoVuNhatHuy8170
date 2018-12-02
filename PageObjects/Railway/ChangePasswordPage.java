@@ -21,10 +21,14 @@ public class ChangePasswordPage extends GeneralPage {
 		return Constant.WEBDRIVER.findElement(lblChangePwd).getText();
 	}
 	
-	public void changePwd(String currentPwd, String newPwd, String confirmPwd) {
-		elementHelper.enterTextBox(Constant.WEBDRIVER.findElement(txtCurrentPwd), currentPwd);
-		elementHelper.enterTextBox(Constant.WEBDRIVER.findElement(txtNewPwd), newPwd);
-		elementHelper.enterTextBox(Constant.WEBDRIVER.findElement(txtConfirmPwd), confirmPwd);	
+	public void changePassword(String currentPwd, String newPwd) {
+		changePassword(currentPwd, newPwd, newPwd);
+	}
+	
+	public void changePassword(String currentPwd, String newPwd, String confirmPwd) {
+		elementHelper.enter(Constant.WEBDRIVER.findElement(txtCurrentPwd), currentPwd);
+		elementHelper.enter(Constant.WEBDRIVER.findElement(txtNewPwd), newPwd);
+		elementHelper.enter(Constant.WEBDRIVER.findElement(txtConfirmPwd), confirmPwd);	
 		Constant.WEBDRIVER.findElement(btnChangePwd).click();
 	}
 }
