@@ -7,8 +7,6 @@ import Common.Utilities;
 import Constant.Constant;
 
 public class RegisterPage extends GeneralPage {
-	ElementHelper elementHelper = new ElementHelper();
-	Utilities utilities = new Utilities();
 	// Locators
 	private By txtUsername = By.id("email");
 	private By txtPassword = By.id("password");
@@ -41,14 +39,15 @@ public class RegisterPage extends GeneralPage {
 	}
 
 	public void registerAccount(String email, String pwd, String confirmPwd, String pid) {
-		elementHelper.enter(Constant.WEBDRIVER.findElement(txtUsername), email);
-		elementHelper.enter(Constant.WEBDRIVER.findElement(txtPassword), pwd);
-		elementHelper.enter(Constant.WEBDRIVER.findElement(txtConfirmPassword), confirmPwd);
-		elementHelper.enter(Constant.WEBDRIVER.findElement(txtPID), pid);
+		ElementHelper.enter(Constant.WEBDRIVER.findElement(txtUsername), email);
+		ElementHelper.enter(Constant.WEBDRIVER.findElement(txtPassword), pwd);
+		ElementHelper.enter(Constant.WEBDRIVER.findElement(txtConfirmPassword), confirmPwd);
+		ElementHelper.enter(Constant.WEBDRIVER.findElement(txtPID), pid);
 		Constant.WEBDRIVER.findElement(btnRegister).click();
 	}
 
 	public void activateAccount() {
-		Constant.WEBDRIVER.get(utilities.getActiveLink().replace(":8888", ""));
+		Constant.WEBDRIVER.get(Utilities.getActiveLink().replace(":8888", ""));
+//		Constant.WEBDRIVER.get(utilities.getActiveLink());
 	}
 }

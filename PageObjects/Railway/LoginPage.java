@@ -8,7 +8,6 @@ import Constant.Constant;
 
 public class LoginPage extends GeneralPage {
 
-	ElementHelper elementHelper = new ElementHelper();
 	// Locators
 	private By txtUsername = By.id("username");
 	private By txtPassword = By.id("password");
@@ -25,8 +24,8 @@ public class LoginPage extends GeneralPage {
 	// Methods
 	public void login(String username, String password) {
 		// Submit login credentials
-		elementHelper.enter(Constant.WEBDRIVER.findElement(txtUsername), username);
-		elementHelper.enter(Constant.WEBDRIVER.findElement(txtPassword), password);
+		ElementHelper.enter(Constant.WEBDRIVER.findElement(txtUsername), username);
+		ElementHelper.enter(Constant.WEBDRIVER.findElement(txtPassword), password);
 		Constant.WEBDRIVER.findElement(btnLogin).click();
 	}
 

@@ -1,11 +1,17 @@
-<suite name="Suite1" verbose="1" >
-  <test name="TestSuite1">
-    <classes>
-      <class name="Railway.LoginTest"/>
-      <class name="Railway.RegisterTest"/>
-	  <class name="Railway.ChangePasswordTest"/>
-	  <class name="Railway.ForgotPasswordTest"/>
-      <class name="Railway.BookTicketTest"/>
-    </classes>
-  </test>
+<suite name="Suite1" verbose="1">
+	  
+	<test name="TestSuite1">
+		    
+		<classes>
+			      
+			<class name="Railway.LoginTest" />			      
+			<class name="Railway.RegisterTest" />
+			<class name="Railway.ChangePasswordTest" />
+			<class name="Railway.ForgotPasswordTest" />			      
+			<class name="Railway.BookTicketTest" />			 
+			<class name="Railway.MyTicketTest" />
+			    
+		</classes>
+		  
+	</test>
 </suite>

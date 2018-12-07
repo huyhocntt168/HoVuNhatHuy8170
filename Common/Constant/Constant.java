@@ -16,6 +16,7 @@ public class Constant {
 	public static final String PASSWORD_ACTIVATION = "01203508910";
 	public static final String PID = "123456789";
 	public static final String EMPTY = "";
+	public static final String INVALID_DATE = "12072018";
 	
 	public enum TabName {
 		LOGOUT("Log out"),

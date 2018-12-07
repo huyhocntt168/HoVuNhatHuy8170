@@ -7,32 +7,51 @@
         <methods>
           <include name="TC05"/>
           <include name="beforeClass"/>
+          <include name="beforeMethod"/>
           <include name="TC03"/>
           <include name="afterClass"/>
         </methods>
       </class> <!-- Railway.LoginTest -->
-      <class name="Railway.ChangePasswordTest">
-        <methods>
-          <include name="beforeClass"/>
-          <include name="TC09"/>
-          <include name="afterClass"/>
-        </methods>
-      </class> <!-- Railway.ChangePasswordTest -->
-      <class name="Railway.ForgotPasswordTest">
-        <methods>
-          <include name="beforeClass"/>
-          <include name="TC12"/>
-          <include name="afterClass"/>
-          <include name="TC13"/>
-        </methods>
-      </class> <!-- Railway.ForgotPasswordTest -->
       <class name="Railway.RegisterTest">
         <methods>
+          <include name="beforeMethod"/>
           <include name="beforeClass"/>
           <include name="afterClass"/>
           <include name="TC11"/>
         </methods>
       </class> <!-- Railway.RegisterTest -->
+      <class name="Railway.ForgotPasswordTest">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="TC12"/>
+          <include name="afterClass"/>
+          <include name="beforeMethod"/>
+        </methods>
+      </class> <!-- Railway.ForgotPasswordTest -->
+      <class name="Railway.MyTicketTest">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="beforeMethod"/>
+          <include name="afterClass"/>
+          <include name="TC16"/>
+        </methods>
+      </class> <!-- Railway.MyTicketTest -->
+      <class name="Railway.BookTicketTest">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="beforeMethod"/>
+          <include name="afterClass"/>
+          <include name="TC15"/>
+        </methods>
+      </class> <!-- Railway.BookTicketTest -->
+      <class name="Railway.ChangePasswordTest">
+        <methods>
+          <include name="beforeClass"/>
+          <include name="TC09"/>
+          <include name="beforeMethod"/>
+          <include name="afterClass"/>
+        </methods>
+      </class> <!-- Railway.ChangePasswordTest -->
     </classes>
   </test> <!-- TestSuite1(failed) -->
 </suite> <!-- Failed suite [Suite1] -->

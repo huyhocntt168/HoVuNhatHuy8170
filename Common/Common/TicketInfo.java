@@ -13,10 +13,47 @@ public class TicketInfo {
 
 	public TicketInfo() {
 		this.departDate = getRandomDepartDate();
-		this.departStation = "Sài Gòn";
-		this.arriveStation = "Nha Trang";
+		this.departStation = getRandomDepartStation();
+		this.arriveStation = getRandomArriveStation();
 		this.seatType = "Soft bed with air conditioner";
 		this.ticketAmount = "1";
+	}
+
+	public String getRandomDepartStation() {
+		Random random = new Random();
+		String[] deparStation = { "Sài Gòn", "Phan Thiết", "Nha Trang", "Đà Nẵng", "Huế", "Quảng Ngãi" };
+		return deparStation[random.nextInt(5)];
+	}
+
+	public String getRandomArriveStation() {
+		Random random = new Random();
+		if (this.departStation.equals("Sài Gòn")) {
+			String[] arriveStation = { "Phan Thiết", "Nha Trang", "Đà Nẵng", "Huế", "Quảng Ngãi" };
+			return arriveStation[random.nextInt(4)];
+		} else if (this.departStation.equals("Phan Thiết")) {
+			String[] arriveStation = { "Sài Gòn", "Nha Trang", "Đà Nẵng" };
+			return arriveStation[random.nextInt(2)];
+		} else if (this.departStation.equals("Nha Trang")) {
+			String[] arriveStation = { "Sài Gòn", "Phan Thiết", "Đà Nẵng", "Huế" };
+			return arriveStation[random.nextInt(3)];
+		} else if (this.departStation.equals("Đà Nẵng")) {
+			String[] arriveStation = { "Sài Gòn", "Nha Trang", "Huế", "Quảng Ngãi" };
+			return arriveStation[random.nextInt(3)];
+		} else if (this.departStation.equals("Huế")) {
+			String[] arriveStation = { "Sài Gòn", "Nha Trang", "Đà Nẵng", "Quảng Ngãi" };
+			return arriveStation[random.nextInt(3)];
+		} else {
+			String[] arriveStation = { "Sài Gòn", "Nha Trang", "Đà Nẵng", "Huế" };
+			return arriveStation[random.nextInt(3)];
+		}
+	}
+	public TicketInfo(String departDate, String departStation, String arriveStation, String seatType,
+			String ticketAmount) {
+		this.departDate = departDate;
+		this.departStation = departStation;
+		this.arriveStation = arriveStation;
+		this.seatType = seatType;
+		this.ticketAmount = ticketAmount;
 	}
 
 	public String getDepartDate() {

@@ -2,12 +2,11 @@ package Railway;
 
 import org.openqa.selenium.By;
 
+import Common.ElementHelper;
 import Common.Utilities;
 import Constant.Constant;
 
 public class ForgotPasswordPage extends GeneralPage {
-
-	Utilities utilites = new Utilities();
 
 	private By txtEmail = By.id("email");
 	private By btnSendInstructions = By.xpath("//input[@value='Send Instructions']");
@@ -19,22 +18,11 @@ public class ForgotPasswordPage extends GeneralPage {
 	private By lblResetFormHeader = By.xpath("//legend");
 	private By lblTokenErrorMsg = By.xpath("//label[@for='resetToken' and @class='validation-error']");
 	private By lblConfirmPwdErrorMsg = By.xpath("//label[@for='confirmPassword' and @class='validation-error']");
-
-	public void goToResetPasswordPageWithoutToken(String email) {
-		elementHelper.enter(Constant.WEBDRIVER.findElement(txtEmail), email);
-		Constant.WEBDRIVER.findElement(btnSendInstructions).click();
-		Constant.WEBDRIVER.get(getResetLink());
-	}
 	
-	public void goToResetPasswordPageWithToken(String email) {
-		elementHelper.enter(Constant.WEBDRIVER.findElement(txtEmail), email);
+	public void goToResetPasswordPage(String email) {
+		ElementHelper.enter(Constant.WEBDRIVER.findElement(txtEmail), email);
 		Constant.WEBDRIVER.findElement(btnSendInstructions).click();
-		Constant.WEBDRIVER.get(utilites.getActiveLink().replace(":8888", ""));
-	}
-	
-	public String getResetLink() {
-		String link = utilites.getActiveLink().substring(0, utilites.getActiveLink().indexOf("="));
-		return link.replace(":8888", "");
+		Constant.WEBDRIVER.get(Utilities.getActiveLink().replace(":8888", ""));
 	}
 
 	public String getErrorMsg() {
@@ -58,17 +46,17 @@ public class ForgotPasswordPage extends GeneralPage {
 	}
 
 	public void resetPassword(String newPwd, String confirmPwd) {
-		elementHelper.waitElementLocale(txtNewPwd);
-		elementHelper.enter(Constant.WEBDRIVER.findElement(txtNewPwd), newPwd);
-		elementHelper.enter(Constant.WEBDRIVER.findElement(txtConfirmNewPwd), confirmPwd);
+		ElementHelper.waitElementLocale(txtNewPwd);
+		ElementHelper.enter(Constant.WEBDRIVER.findElement(txtNewPwd), newPwd);
+		ElementHelper.enter(Constant.WEBDRIVER.findElement(txtConfirmNewPwd), confirmPwd);
 		Constant.WEBDRIVER.findElement(btnResetPwd).click();
 	}
 
 	public void resetPassword(String newPwd, String confirmPwd, String resetToken) {
-		elementHelper.waitElementLocale(txtNewPwd);
-		elementHelper.enter(Constant.WEBDRIVER.findElement(txtNewPwd), newPwd);
-		elementHelper.enter(Constant.WEBDRIVER.findElement(txtConfirmNewPwd), confirmPwd);
-		elementHelper.enter(Constant.WEBDRIVER.findElement(txtResetToken), resetToken);
+		ElementHelper.waitElementLocale(txtNewPwd);
+		ElementHelper.enter(Constant.WEBDRIVER.findElement(txtNewPwd), newPwd);
+		ElementHelper.enter(Constant.WEBDRIVER.findElement(txtConfirmNewPwd), confirmPwd);
+		ElementHelper.enter(Constant.WEBDRIVER.findElement(txtResetToken), resetToken);
 		Constant.WEBDRIVER.findElement(btnResetPwd).click();
 	}
 }

@@ -2,6 +2,7 @@ package Railway;
 
 import org.openqa.selenium.By;
 
+import Common.ElementHelper;
 import Common.TicketInfo;
 import Constant.Constant;
 
@@ -23,13 +24,22 @@ public class BookTicketPage extends GeneralPage {
 
 	// Methods
 
-	public void bookTicket(TicketInfo ticketInfo) {
-		elementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdDepartDate), ticketInfo.getDepartDate());
-		elementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdDepartStation), ticketInfo.getDepartStation());
-		elementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdArriveStation), ticketInfo.getArriveStation());
-		elementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdSeatType), ticketInfo.getSeatType());
-		elementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdTicketAmount), ticketInfo.getTicketAmount());
+	public void bookTicket(TicketInfo ticketInfo) throws InterruptedException {
+		ElementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdDepartDate), ticketInfo.getDepartDate());
+		ElementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdDepartStation), ticketInfo.getDepartStation());
+		Thread.sleep(1000);
+		ElementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdArriveStation), ticketInfo.getArriveStation());
+		ElementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdSeatType), ticketInfo.getSeatType());
+		ElementHelper.selectItemByText(Constant.WEBDRIVER.findElement(drdTicketAmount), ticketInfo.getTicketAmount());
 		Constant.WEBDRIVER.findElement(btnBookticket).click();
+	}
+	
+	public void bookMultipleTicket(int amount) throws InterruptedException {
+		for (int i=0; i<amount; i++) {
+			TicketInfo ticketInfo = new TicketInfo();
+			openTab(Constant.TabName.BOOKTICKET);
+			bookTicket(ticketInfo);
+		}
 	}
 
 	public String getTblDepartStation() {
@@ -49,10 +59,12 @@ public class BookTicketPage extends GeneralPage {
 	}
 	
 	public String getDepartStation() {
+//		elementHelper.waitElementLocale(selectedDepartSation);
 		return Constant.WEBDRIVER.findElement(selectedDepartSation).getText();
 	}
 	
 	public String getArriveStation() {
+//		elementHelper.waitElementLocale(selectedArriveStation);
 		return Constant.WEBDRIVER.findElement(selectedArriveStation).getText();
 	}
 }

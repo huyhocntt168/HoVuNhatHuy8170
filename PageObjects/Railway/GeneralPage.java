@@ -8,7 +8,6 @@ import Constant.Constant;
 
 
 public class GeneralPage {
-	ElementHelper elementHelper = new ElementHelper();
 	
 	// Locators
 	private final By lblWelcomeMessage = By.xpath("//div[@class='account']");
@@ -33,7 +32,7 @@ public class GeneralPage {
 	}
 
 	public void logout() {
-		if(elementHelper.isTabDisplay(Constant.TabName.LOGOUT)) {
+		if(ElementHelper.isTabDisplay(Constant.TabName.LOGOUT)) {
 		getTabButton(Constant.TabName.LOGOUT).click();
 		}
 	}

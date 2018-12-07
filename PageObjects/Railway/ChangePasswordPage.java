@@ -6,7 +6,6 @@ import Common.ElementHelper;
 import Constant.Constant;
 
 public class ChangePasswordPage extends GeneralPage {
-	ElementHelper elementHelper = new ElementHelper();
 	// Locators
 	private final By txtCurrentPwd = By.id("currentPassword");
 	private final By txtNewPwd = By.id("newPassword");
@@ -26,9 +25,9 @@ public class ChangePasswordPage extends GeneralPage {
 	}
 	
 	public void changePassword(String currentPwd, String newPwd, String confirmPwd) {
-		elementHelper.enter(Constant.WEBDRIVER.findElement(txtCurrentPwd), currentPwd);
-		elementHelper.enter(Constant.WEBDRIVER.findElement(txtNewPwd), newPwd);
-		elementHelper.enter(Constant.WEBDRIVER.findElement(txtConfirmPwd), confirmPwd);	
+		ElementHelper.enter(Constant.WEBDRIVER.findElement(txtCurrentPwd), currentPwd);
+		ElementHelper.enter(Constant.WEBDRIVER.findElement(txtNewPwd), newPwd);
+		ElementHelper.enter(Constant.WEBDRIVER.findElement(txtConfirmPwd), confirmPwd);	
 		Constant.WEBDRIVER.findElement(btnChangePwd).click();
 	}
 }

@@ -2,25 +2,21 @@ package Railway;
 
 import static org.testng.Assert.assertEquals;
 
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import Common.ElementHelper;
 import Constant.Constant;
 import Constant.Messages;
 
 public class LoginTest extends TestBase {
 	HomePage homePage = new HomePage();
 	LoginPage loginPage = new LoginPage();
-	
-	@BeforeMethod
-	public void beforeMethod() {
-		homePage.openTab(Constant.TabName.LOGIN);
-	}
 
 	@Test(description = "User can log into Railway with valid username and password")
 	public void TC01() {
 		SoftAssert softAssert = new SoftAssert();
+		homePage.openTab(Constant.TabName.LOGIN);
 		loginPage.login(Constant.USERNAME, Constant.PASSWORD);
 		softAssert.assertEquals(loginPage.getWelcomeMessage(), String.format(Messages.WELCOME, Constant.USERNAME));
 		loginPage.logout();
@@ -29,6 +25,7 @@ public class LoginTest extends TestBase {
 
 	@Test(description = "User can't login with blank \"Username\" textbox")
 	public void TC02() {
+		homePage.openTab(Constant.TabName.LOGIN);
 		loginPage.login("", Constant.PASSWORD);
 		assertEquals(loginPage.getErrorMsg(), Messages.ERROR_LOGIN_FORM);
 	}
@@ -55,9 +52,9 @@ public class LoginTest extends TestBase {
 	public void TC06() {
 		SoftAssert softAssert = new SoftAssert();
 		loginPage.login(Constant.USERNAME, Constant.PASSWORD);
-		softAssert.assertTrue(elementHelper.isTabDisplay(Constant.TabName.MYTICKET),"My Ticket tab is not displayed");
-		softAssert.assertTrue(elementHelper.isTabDisplay(Constant.TabName.CHANGEPASSWORD),"Change Password tab is not displayed");
-		softAssert.assertTrue(elementHelper.isTabDisplay(Constant.TabName.LOGOUT),"Logout tab is not displayed");
+		softAssert.assertTrue(ElementHelper.isTabDisplay(Constant.TabName.MYTICKET),"My Ticket tab is not displayed");
+		softAssert.assertTrue(ElementHelper.isTabDisplay(Constant.TabName.CHANGEPASSWORD),"Change Password tab is not displayed");
+		softAssert.assertTrue(ElementHelper.isTabDisplay(Constant.TabName.LOGOUT),"Logout tab is not displayed");
 
 		loginPage.openTab(Constant.TabName.MYTICKET);
 		softAssert.assertEquals(loginPage.getPageHeader(), "Manage ticket");
@@ -71,6 +68,7 @@ public class LoginTest extends TestBase {
 	
 	@Test(description = "User can't login with an account hasn't been activated")
 	public void TC08() {
+		homePage.openTab(Constant.TabName.LOGIN);
 		loginPage.login(Constant.USERNAME_INACTIVE, Constant.PASSWORD_INACTIVE);
 
 		assertEquals(loginPage.getErrorMsg(), Messages.ERROR_LOGIN_INACTIVE_ACCOUNT);

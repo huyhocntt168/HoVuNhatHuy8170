@@ -10,16 +10,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import Constant.Constant;
 
 public class ElementHelper {
-	public void enter(WebElement txtBox, String value) {
+	public static void enter(WebElement txtBox, String value) {
 		txtBox.clear();
 		txtBox.sendKeys(value);
 	}
 
-	public boolean isTabDisplay(Constant.TabName tabName) {
+	public static boolean isTabDisplay(Constant.TabName tabName) {
 		return isElementDisplay(By.xpath(String.format("//span[normalize-space()='%s']", tabName.getName())));
 	}
 
-	public boolean isElementDisplay(By locator) {
+	public static boolean isElementDisplay(By locator) {
 		try {
 			if (Constant.WEBDRIVER.findElement(locator).isDisplayed()) {
 				return true;
@@ -30,17 +30,17 @@ public class ElementHelper {
 		}
 	}
 
-	public void selectItemByValue(WebElement drdElement, String value) {
+	public static void selectItemByValue(WebElement drdElement, String value) {
 		Select select = new Select(drdElement);
 		select.selectByValue(value);
 	}
 
-	public void selectItemByText(WebElement drdElement, String value) {
+	public static void selectItemByText(WebElement drdElement, String value) {
 		Select select = new Select(drdElement);
 		select.selectByVisibleText(value);
 	}
 
-	public WebElement waitElementLocale(By locate) {
+	public static WebElement waitElementLocale(By locate) {
 		return new WebDriverWait(Constant.WEBDRIVER, 20).until(ExpectedConditions.visibilityOfElementLocated(locate));
 	}
 }

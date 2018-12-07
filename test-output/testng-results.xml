@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="16509" started-at="2018-12-02T15:27:06Z" finished-at="2018-12-02T15:27:23Z">
+  <suite name="Default suite" duration-ms="90535" started-at="2018-12-07T08:45:37Z" finished-at="2018-12-07T08:47:07Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="16509" started-at="2018-12-02T15:27:06Z" finished-at="2018-12-02T15:27:23Z">
+    <test name="Default test" duration-ms="90535" started-at="2018-12-07T08:45:37Z" finished-at="2018-12-07T08:47:07Z">
       <class name="Railway.MyTicketTest">
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:Railway.MyTicketTest@204f30ec]" name="beforeClass" is-config="true" duration-ms="8541" started-at="2018-12-02T15:27:06Z" finished-at="2018-12-02T15:27:15Z">
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:Railway.MyTicketTest@f6c48ac]" name="beforeClass" is-config="true" duration-ms="6789" started-at="2018-12-07T08:45:37Z" finished-at="2018-12-07T08:45:44Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:Railway.MyTicketTest@204f30ec]" name="beforeMethod" is-config="true" duration-ms="2757" started-at="2018-12-02T15:27:15Z" finished-at="2018-12-02T15:27:18Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="TC16()[pri:0, instance:Railway.MyTicketTest@204f30ec]" name="TC16" duration-ms="4553" started-at="2018-12-02T15:27:18Z" description="User can cancel a ticket" finished-at="2018-12-02T15:27:22Z">
+        <test-method status="PASS" signature="TC16()[pri:1, instance:Railway.MyTicketTest@f6c48ac]" name="TC16" duration-ms="7081" started-at="2018-12-07T08:45:44Z" description="User can cancel a ticket" finished-at="2018-12-07T08:45:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- TC16 -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:Railway.MyTicketTest@204f30ec]" name="afterClass" is-config="true" duration-ms="630" started-at="2018-12-02T15:27:22Z" finished-at="2018-12-02T15:27:23Z">
+        <test-method status="PASS" signature="FTTC01()[pri:2, instance:Railway.MyTicketTest@f6c48ac]" name="FTTC01" duration-ms="42310" started-at="2018-12-07T08:45:51Z" description="User can filter &quot;Manager ticket&quot; table with Depart Station" finished-at="2018-12-07T08:46:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FTTC01 -->
+        <test-method status="PASS" signature="FTTC02()[pri:3, instance:Railway.MyTicketTest@f6c48ac]" name="FTTC02" duration-ms="33680" started-at="2018-12-07T08:46:33Z" description="Error displays when user applies filter with invalid format for &quot;Depart Date&quot; in &quot;Manage ticket&quot; table" finished-at="2018-12-07T08:47:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- FTTC02 -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:Railway.MyTicketTest@f6c48ac]" name="afterClass" is-config="true" duration-ms="655" started-at="2018-12-07T08:47:07Z" finished-at="2018-12-07T08:47:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
